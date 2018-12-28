@@ -1,11 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes              from 'prop-types';
+import {findDOMNode}          from 'react-dom';
 import CommentList            from '../Comments/CommentList';
-import toggleOpen             from '../../decorators/toggleOpen';
 
 class Articles extends PureComponent {
     static propTypes = {
-        articles: PropTypes.shape({
+        article: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
@@ -14,13 +14,13 @@ class Articles extends PureComponent {
     };
 
     render() {
-        const {articles, opened, toggleOpen} = this.props;
-        const {title, text, comments} = articles;
+        const {article, isOpen, toggleOpen} = this.props;
+        const {title, text, comments} = article;
         return (
             <div>
                 <button onClick={toggleOpen} >{title}</button>
                 <h2>{title}</h2>
-                {opened &&
+                {isOpen &&
                     <section>
                         <p>{text}</p>
                         <CommentList comments={comments}/>
@@ -31,4 +31,4 @@ class Articles extends PureComponent {
     }
 }
 
-export default toggleOpen(Articles);
+export default Articles;

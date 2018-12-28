@@ -1,6 +1,6 @@
 import React       from 'react';
 import ReactDOM    from 'react-dom';
-import ArticleList from './components/Articles/ArticleList'
+import App from './container/App'
 
-ReactDOM.render(<ArticleList/> ,document.getElementById('app'));
+ReactDOM.render(<App/> ,document.getElementById('app'));
 module.hot.accept();

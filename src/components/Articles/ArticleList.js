@@ -1,7 +1,30 @@
-import React      from 'react';
-import Articles   from './Articles';
-import {articles} from '../../data/fixtures';
+import React, {PureComponent}  from 'react';
+import Articles                from './Articles';
 
-export default function ArticleList() {
-    return <ul> {articles.map(element => <li key={element.id} ><Articles articles={element} /></li>)} </ul>
+export default class ArticleList extends PureComponent{
+    state = {
+        openArticleId: null
+    };
+
+    toggleOpenArticles = (openArticleId) => () => {
+       const id =  openArticleId !== this.state.openArticleId ? openArticleId : null;
+       this.setState({openArticleId: id})
+    };
+
+    render() {
+        const {articles} = this.props;
+        const {openArticleId} = this.state;
+
+        return <ul>
+            {articles.map(article =>
+                <li key={article.id} >
+                    <Articles
+                        article={article}
+                        isOpen={article.id === openArticleId}
+                        toggleOpen={this.toggleOpenArticles(article.id)}
+                    />
+                </li>
+            )}
+        </ul>
+    }
 }

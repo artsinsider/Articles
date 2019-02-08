@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
-export default (OriginComponent) => class WrappedComponent extends Component {
+export default ToggleComponent => class Component extends PureComponent {
     state ={
         isOpen: false,
     };
@@ -11,7 +11,7 @@ export default (OriginComponent) => class WrappedComponent extends Component {
 
     render() {
         return (
-            <OriginComponent
+            <ToggleComponent
                 {...this.props}
                 {...this.state}
                 toggleOpen={this.toggleOpen}

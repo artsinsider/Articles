@@ -23,7 +23,9 @@ class Articles extends PureComponent {
                 {isOpen &&
                     <section>
                         <p>{text}</p>
-                        <CommentList comments={comments}/>
+                        <CommentList
+                            comments={comments}
+                        />
                     </section>
                 }
             </div>

@@ -7,8 +7,9 @@ export default class ArticleList extends PureComponent{
     };
 
     toggleOpenArticles = (openArticleId) => () => {
-       const id =  openArticleId !== this.state.openArticleId ? openArticleId : null;
-       this.setState({openArticleId: id})
+       this.setState({
+           openArticleId: openArticleId !== this.state.openArticleId ? openArticleId : null
+       })
     };
 
     render() {
